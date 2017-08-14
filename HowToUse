@@ -12,7 +12,7 @@ II. Phenotype to phenotype , based Zhao et al. 2014 (Barabasi group) disease net
 
 1.Use survey data from patients 
 2. Input is in csv. format , example shown in 'Fakeinputdata' folder
-3.commandline Rscript PredictDiseasePip.R [InputFileAddress] [PatientID]
+3.commandline Rscript PredictDiseasePip.R [PatientID] [InputFileAddress] [OutputAddress]
 4.Output will be in .csv format. 
 
 III.VEP based prediction. 
@@ -21,4 +21,9 @@ III.VEP based prediction.
 
 
 
+Other Notes:
+1.Imputation of SNPs hasn't been used yet, Haoyuan is working on a more efficeint version 
+2. 23andMe data can be used now. The pipline can be adapted to Ancestry data very quickly if needed
+3.Be careful of R version because the packages sometimes depend on the version 
+4. Other more sophisticated predcition algorithm are in the progress of being implemented. 
 
