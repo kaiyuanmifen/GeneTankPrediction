@@ -1,6 +1,10 @@
 
-Address=as.character(commandArgs(trailingOnly = T)[[1]][1])
-PatientID=as.character(commandArgs(trailingOnly = T)[[2]][1])
+PatientID=as.character(commandArgs(trailingOnly = T)[[1]][1])
+Address=as.character(commandArgs(trailingOnly = T)[[2]][1])
+
+OutputAddress=as.character(commandArgs(trailingOnly = T)[[3]][1])
+
+OutputAddress=paste0(OutputAddress,"Patient_",PatientID)
 
 print(paste('working on address',Address))
 print(paste('working on patient',PatientID))
@@ -28,7 +32,10 @@ Report$type='Reported'
 
 #head(Report)
 Report=rbind(Report,data.frame(Phenotype=Predicted,Value=1,type='Predicted'))
-write.csv(Report,file = paste0('PhenoPre_report_patient_',PatientID,'.csv'))
+dir.create(OutputAddress, showWarnings = FALSE)
+
+
+write.csv(Report,file = paste0(OutputAddress,'/PhenoPre_report_patient_',PatientID,'.csv'))
 
 print('done')
       
