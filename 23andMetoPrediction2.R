@@ -73,7 +73,7 @@ GTvariants=unlist(lapply(strsplit(GT,'[/]'),FUN = function(x){sum(as.integer(x))
 names(GTvariants)=rownames(GT)
 
 #Get the GWAS informaiton 
-GWAScatalog=read.csv('~/BoxSync/GeneTank/Datasets/GWAScatalog/GWASCatalogLinkedToPNMe.csv')
+GWAScatalog=read.csv('./GWASCatalogLinkedToPNMe.csv')
 #head(GWAScatalog)
 #names(GWAScatalog)
 GWASsubInfor=GWAScatalog[,c('PatientLikeMeName',"SNPS")]
