@@ -19,7 +19,7 @@ library("VariantAnnotation") #load the package
 PatientID=as.character(commandArgs(trailingOnly = T)[[1]][1])
 InputAddress=as.character(commandArgs(trailingOnly = T)[[2]][1])
 OutputAddress=as.character(commandArgs(trailingOnly = T)[[3]][1])
-OutputAddress=paste0(OutputAddress,"Patient_",PatientID)
+OutputAddress=paste0(OutputAddress,"/Patient_",PatientID)
 ReferenceAddress="./reference/"
 
 system(paste("python ./23andme/23andmeVersionBuild.py", InputAddress))
@@ -34,7 +34,7 @@ print('lifted over and coverted to CVF')
 #read vcf
 VCF=paste0(OutputAddress,'/',list.files(OutputAddress)[grepl(pattern = '.vcf',list.files(OutputAddress))])
 Target=readVcf(VCF,"hg19")
-
+print('read VCF')
 #geno(Target)
 
 #geno(header(Target))
@@ -115,5 +115,5 @@ DiseaseReport=as.data.frame(DiseaseReport)
 
 #tail(DiseaseReport)
 write.csv(DiseaseReport,file = paste0(OutputAddress,'/GeneticPhenotypeReport_','Patient_',PatientID,'.csv'))
-
+print('finished output ')
 
