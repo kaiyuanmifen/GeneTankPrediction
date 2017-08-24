@@ -28,6 +28,7 @@ tail(PatientData)
 
 Target=PatientData[PatientData$Phenotype%in%AllPhenotype,]
 Target=Target[Target$Value==1,]
+Target=Target[Target$Value!='NA',]
 
 PatientVector=rep(0,length(AllPhenotype))
 names(PatientVector)=AllPhenotype
