@@ -11,10 +11,18 @@ Address=as.character(commandArgs(trailingOnly = T)[[2]][1])
 
 OutputAddress=as.character(commandArgs(trailingOnly = T)[[3]][1])
 
-OutputAddress=paste0(OutputAddress,"Patient_",PatientID)
+OutputAddress=paste0(OutputAddress,"/Patient_",PatientID)
 
-print(paste('working on address',Address))
+#PatientID='010'
+#Address='/Users/dliu/BoxSync/GeneTank/IntegratedPipeline/FakeInputData/Patient_4810.csv'
+#OutputAddress='/Users/dliu/BoxSync/GeneTank/IntegratedPipeline/Prediction'
+
+Threshold=c(0.2,0.05)
+
+
+print(paste('working on Input address',Address))
 print(paste('working on patient',PatientID))
+print(paste("Threshold:",Threshold))
 #give prediction 
 X=load('./DiseaseNetZhao2014.Rdata')
 DNet=get(X)
@@ -71,8 +79,19 @@ Predicted=signif(Predicted,digits = 3)
 
 #head(Report)
 Report=rbind(Report,data.frame(Phenotype=names(Predicted),Value=as.vector(Predicted),type='Predicted'))
+names(Report)=c("Phenotype" ,"Score" , "type"  )
+Report$Score=as.numeric(Report$Score)
+nrow(Report)
+head(Report,100)
+Report$Risk='Unknown'
+Report$Risk[Report$Score>=Threshold[1]]='High Risk'
+Report$Risk[Report$Score<Threshold[1]&Report$Score>=Threshold[2]]='Moderate Risk'
+Report$Risk[Report$Score<=Threshold[2]]='Low Risk'
+Report$Risk[is.na(Report$Score)]='Unknown'
+table(Report$Risk)
 
 dir.create(OutputAddress, showWarnings = FALSE)
+
 #Report$Value='Postiive'
 
 write.csv(Report,file = paste0(OutputAddress,'/PhenoPre_report_patient_',PatientID,'.csv'))
