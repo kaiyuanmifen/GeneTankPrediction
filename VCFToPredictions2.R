@@ -183,6 +183,10 @@ FinalReport$Risk[FinalReport$MaxScore>=Threshold[1]]='High Risk'
 FinalReport$Risk[FinalReport$MaxScore<Threshold[1]&FinalReport$MaxScore>=Threshold[2]]='Moderate Risk'
 FinalReport$Risk[FinalReport$MaxScore<Threshold[2]]='Low Risk'
 table(FinalReport$Risk)
+
+#Category of phenotypes 
+FinalReport$Category=sample(c(1:5),size=nrow(FinalReport),replace = T)
+
 #head(FinalReport)
 #tail(DiseaseReport)
 dir.create(OutputAddress, showWarnings = FALSE)

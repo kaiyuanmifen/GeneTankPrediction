@@ -90,6 +90,10 @@ Report$Risk[Report$Score<=Threshold[2]]='Low Risk'
 Report$Risk[is.na(Report$Score)]='Unknown'
 table(Report$Risk)
 
+#Category of phenotypes 
+Report$Category=sample(c(1:5),size=nrow(Report),replace = T)
+
+
 dir.create(OutputAddress, showWarnings = FALSE)
 
 #Report$Value='Postiive'
