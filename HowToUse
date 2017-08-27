@@ -10,7 +10,7 @@ I. raw 23andMe data to VCFs
 3.The ourput will be in csv format 
 
 II.Genotype to Phenotype, based on GWAScatalog data
-1.Rscript  VCFToPredictions2.R [PaitentID] [Input_VCF_file] [OutputAddress] 
+1.Rscript  VCFToPredictions3.R [PaitentID] [Input_VCF_file] [OutputAddress] 
 2.The ourput will be in csv format 
 
 
