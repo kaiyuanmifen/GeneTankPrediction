@@ -70,6 +70,9 @@ GT$Genotype2=paste0('(',GT$Genotype2,")")
 GT$Genotype2=paste0(rownames(GT),GT$Genotype2)
 tail(GT)
 
+
+
+
 #Search Snpedia 
 
 if (!require("SNPediaR",character.only = TRUE))
@@ -91,11 +94,12 @@ print(paste(sum(rownames(GT)%in%tolower(AvilSNPs)),"SNPs available in SNPedia"))
 
 Vec=floor(seq(from=1,to=nrow(GT),length.out = 10))
 
-res<-list()
-for (i in (1:(length(Vec)-1))){
-        print(paste("working on SNP",Vec[i],'to',Vec[i+1]))
-        res=c(res,getPages(GT$Genotype2)[Vec[i]:Vec[i+1]])
-        }
+# res<-list()
+# for (i in (1:(length(Vec)-1))){
+#         print(paste("working on SNP",Vec[i],'to',Vec[i+1]))
+#         res=c(res,getPages(GT$Genotype2)[Vec[i]:Vec[i+1]])
+#         }
+res=getPages(GT$Genotype2)
 
 ##remove those without matches 
 res=res[sapply(res,length)>0]
