@@ -1,4 +1,4 @@
-#Updated on 23rd Aug 2017 
+#Updated on 18th Oct 2017 
 
 This is the pipeline for two purposes:Predict phenotype from genotype and predict phenotype from existing phenotype.
 Thanks to Haoyuan's contribution to liftover and conversion to VCF  (codes were slightly different from Haoyuan's original scripts)
@@ -10,7 +10,7 @@ I. raw 23andMe data to VCFs
 3.The ourput will be in csv format 
 
 II.Genotype to Phenotype, based on GWAScatalog data
-1.Rscript  VCFToPredictions3.R [PaitentID] [Input_VCF_file] [OutputAddress] 
+1.Rscript  VCFToPredictions5.R [PaitentID] [Input_VCF_file] [OutputAddress] 
 2.The ourput will be in csv format 
 
 
@@ -18,7 +18,7 @@ III. Phenotype to phenotype , based Zhao et al. 2014 (Barabasi group) disease ne
 
 1.Use survey data from patients 
 2. Input is in csv. format , example shown in 'Fakeinputdata' folder
-3.commandline Rscript PhenotypebasedPrediction.R [PatientID] [InputFileAddress] [OutputAddress]
+3.commandline Rscript PhenotypebasedPrediction2.R [PatientID] [InputFileAddress] [OutputAddress]
 4.Output will be in .csv format. 
 
 III.VEP based prediction. 
@@ -32,4 +32,5 @@ Other Notes:
 2. 23andMe data can be used now. The pipline can be adapted to Ancestry data very quickly if needed
 3.Be careful of R version because the packages sometimes depend on the version 
 4. Other more sophisticated predcition algorithm are in the progress of being implemented. 
+
 
